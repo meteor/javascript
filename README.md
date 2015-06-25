@@ -1,10 +1,10 @@
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/airbnb/javascript?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-# Airbnb JavaScript Style Guide() {
+# Airbnb JavaScript Style Guide, Meteor edition
 
-*A mostly reasonable approach to JavaScript*
+*A mostly reasonable approach to JavaScript, with some Meteor flavor*
 
-[For the ES5-only guide click here](es5/).
+
 
 ## Table of Contents
 
