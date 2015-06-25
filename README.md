@@ -83,17 +83,7 @@ This section has been eliminated in the Meteor version, because it does not spec
     }
     ```
 
-  - [2.3](#2.3) <a name='2.3'></a> Note that both `let` and `const` are block-scoped.
-
-    ```javascript
-    // const and let only exist in the blocks they are defined in.
-    {
-      let a = 1;
-      const b = 1;
-    }
-    console.log(a); // ReferenceError
-    console.log(b); // ReferenceError
-    ```
+  - [2.3](#2.3) <a name='2.3'></a> This section removed in the Meteor edition, because it does not specify any style rules.
 
 **[⬆ back to top](#table-of-contents)**
 
