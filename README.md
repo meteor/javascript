@@ -931,7 +931,8 @@ This section has been eliminated in the Meteor version, because it does not spec
 
 ## Blocks
 
-  - [16.1](#16.1) <a name='16.1'></a> Use braces with all multi-line blocks.
+  - [16.1](#16.1) <a name='16.1'></a> <a href="http://eslint.org/docs/rules/curly"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
+    Use braces with all multi-line blocks.
 
     ```javascript
     // bad
@@ -955,7 +956,8 @@ This section has been eliminated in the Meteor version, because it does not spec
     }
     ```
 
-  - [16.2](#16.2) <a name='16.2'></a> If you're using multi-line blocks with `if` and `else`, put `else` on the same line as your
+  - [16.2](#16.2) <a name='16.2'></a> <a href="http://eslint.org/docs/rules/brace-style"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
+    If you're using multi-line blocks with `if` and `else`, put `else` on the same line as your
     `if` block's closing brace.
 
     ```javascript
@@ -1263,7 +1265,8 @@ This section has been eliminated in the Meteor version, because it does not spec
 
 ## Commas
 
-  - [19.1](#19.1) <a name='19.1'></a> Leading commas: **Nope.**
+  - [19.1](#19.1) <a name='19.1'></a> <a href="http://eslint.org/docs/rules/comma-style"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
+    Leading commas: **Nope.**
 
     ```javascript
     // bad
