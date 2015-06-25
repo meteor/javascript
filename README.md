@@ -879,7 +879,8 @@ This section has been eliminated in the Meteor version, because it does not spec
 ## Comparison Operators & Equality
 
   - [15.1](#15.1) <a name='15.1'></a> Use `===` and `!==` over `==` and `!=`.
-  - [15.2](#15.2) <a name='15.2'></a> Conditional statements such as the `if` statement evaulate their expression using coercion with the `ToBoolean` abstract method and always follow these simple rules:
+  - [15.2](#15.2)<a name='15.2'></a>/[15.3](#15.3)<a name='15.3'></a>/[15.4](#15.4)<a name='15.4'></a>
+    Use shortcuts. Note: Conditional statements such as the `if` statement evaluate their expression using coercion with the `ToBoolean` abstract method and always follow the simple rules below. For more information see [Truth Equality and JavaScript](http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/#more-2108) by Angus Croll. (15.2, 15.3, and 15.4 merged in Meteor edition):
 
     + **Objects** evaluate to **true**
     + **Undefined** evaluates to **false**
@@ -887,15 +888,6 @@ This section has been eliminated in the Meteor version, because it does not spec
     + **Booleans** evaluate to **the value of the boolean**
     + **Numbers** evaluate to **false** if **+0, -0, or NaN**, otherwise **true**
     + **Strings** evaluate to **false** if an empty string `''`, otherwise **true**
-
-    ```javascript
-    if ([0]) {
-      // true
-      // An array is an object, objects evaluate to true
-    }
-    ```
-
-  - [15.3](#15.3) <a name='15.3'></a> Use shortcuts.
 
     ```javascript
     // bad
@@ -917,9 +909,13 @@ This section has been eliminated in the Meteor version, because it does not spec
     if (collection.length) {
       // ...stuff...
     }
-    ```
 
-  - [15.4](#15.4) <a name='15.4'></a> For more information see [Truth Equality and JavaScript](http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/#more-2108) by Angus Croll.
+    // note
+    if ([0]) {
+      // true
+      // An array is an object, objects evaluate to true
+    }
+    ```
 
 **[⬆ back to top](#table-of-contents)**
 
