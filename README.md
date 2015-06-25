@@ -51,7 +51,7 @@ This section has been eliminated in the Meteor version, because it does not spec
 
 ## References
 
-  - [2.1](#2.1) <a name='2.1'></a> Use `const` for all of your references; avoid using `var`.
+  - [2.1](#2.1) <a name='2.1'></a> <img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /> Use `const` for all of your references; avoid using `var`.
 
   > Why? This ensures that you can't reassign your references (mutation), which can lead to bugs and difficult to comprehend code.
 
@@ -65,7 +65,7 @@ This section has been eliminated in the Meteor version, because it does not spec
     const b = 2;
     ```
 
-  - [2.2](#2.2) <a name='2.2'></a> If you must mutate references, use `let` instead of `var`.
+  - [2.2](#2.2) <a name='2.2'></a> <img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /> If you must mutate references, use `let` instead of `var`.
 
   > Why? `let` is block-scoped rather than function-scoped like `var`.
 
@@ -89,7 +89,7 @@ This section has been eliminated in the Meteor version, because it does not spec
 
 ## Objects
 
-  - [3.1](#3.1) <a name='3.1'></a> Use the literal syntax for object creation.
+  - [3.1](#3.1) <a name='3.1'></a>  Use the literal syntax for object creation.
 
     ```javascript
     // bad
@@ -1284,7 +1284,8 @@ This section has been eliminated in the Meteor version, because it does not spec
     };
     ```
 
-  - [19.2](#19.2) <a name='19.2'></a> <span style="color: green">Linted: comma-dangle</span> Additional trailing comma: **Yup.**
+  - [19.2](#19.2) <a name='19.2'></a> <a href="http://eslint.org/docs/rules/comma-dangle"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
+    Additional trailing comma: **Yup.**
 
   > Why? This leads to cleaner git diffs. Also, transpilers like Babel will remove the additional trailing comma in the transpiled code which means you don't have to worry about the [trailing comma problem](es5/README.md#commas) in legacy browsers.
 
