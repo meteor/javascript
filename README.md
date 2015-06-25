@@ -329,9 +329,7 @@ This section has been eliminated in the Meteor version, because it does not spec
     const name = 'Capt. Janeway';
     ```
 
-  - [6.2](#6.2) <a name='6.2'></a> Single-line strings longer than 80 characters should be written across multiple lines using string concatenation. If you are writing a multiline string, use template strings as in [6.4](#6.4). This is a change in the Meteor edition.
-
-  - [6.3](#6.3) <a name='6.3'></a> Note: If overused, long strings with concatenation could impact performance. [jsPerf](http://jsperf.com/ya-string-concat) & [Discussion](https://github.com/airbnb/javascript/issues/40).
+  - [6.2](#6.2) <a name='6.2'></a> Single-line strings longer than 80 characters should be written across multiple lines using string concatenation. If you are writing a multiline string, use template strings as in [6.4](#6.4). This is a change in the Meteor edition. Note: If overused, long strings with concatenation could impact performance. [jsPerf](http://jsperf.com/ya-string-concat) & [Discussion](https://github.com/airbnb/javascript/issues/40).
 
     ```javascript
     // bad
@@ -348,6 +346,8 @@ This section has been eliminated in the Meteor version, because it does not spec
       'of Batman. When you stop to think about how Batman had anything to do ' +
       'with this, you would get nowhere fast.';
     ```
+
+   - [6.3](#6.3) <a name='6.3'></a> This non-rule merged as a note into the previous rule in the Meteor edition.
 
   <a name="es6-template-literals"></a>
   - [6.4](#6.4) <a name='6.4'></a> When programmatically building up strings, use template strings instead of concatenation.
