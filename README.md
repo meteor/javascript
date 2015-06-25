@@ -989,7 +989,7 @@ This section has been eliminated in the Meteor version, because it does not spec
 
 ## Comments
 
-  - [17.1](#17.1) <a name='17.1'></a> Use `/** ... */` for multi-line comments. Include a description, specify types and values for all parameters and return values.
+  - [17.1](#17.1) <a name='17.1'></a> Use `/** ... */` for method doc comments. Include a description, specify types and values for all parameters and return values. In the Meteor edition, this rule has been updated to only refer to doc comments.
 
     ```javascript
     // bad
@@ -1021,7 +1021,7 @@ This section has been eliminated in the Meteor version, because it does not spec
     }
     ```
 
-  - [17.2](#17.2) <a name='17.2'></a> Use `//` for single line comments. Place single line comments on a newline above the subject of the comment. Put an empty line before the comment.
+  - [17.2](#17.2) <a name='17.2'></a> Use `//` for all other comments. Place single line comments on a newline above the subject of the comment. Put an empty line before the comment. Has been updated in Meteor edition to refer to all non-doc comments.
 
     ```javascript
     // bad
