@@ -51,7 +51,8 @@ This section has been eliminated in the Meteor version, because it does not spec
 
 ## References
 
-  - [2.1](#2.1) <a name='2.1'></a> <img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /> Use `const` for all of your references; avoid using `var`.
+  - [2.1](#2.1) <a name='2.1'></a> <a href="http://eslint.org/docs/rules/no-var"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
+    Use `const` for all of your references; avoid using `var`.
 
   > Why? This ensures that you can't reassign your references (mutation), which can lead to bugs and difficult to comprehend code.
 
@@ -65,7 +66,8 @@ This section has been eliminated in the Meteor version, because it does not spec
     const b = 2;
     ```
 
-  - [2.2](#2.2) <a name='2.2'></a> <img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /> If you must mutate references, use `let` instead of `var`.
+  - [2.2](#2.2) <a name='2.2'></a> <a href="http://eslint.org/docs/rules/no-var"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
+    If you must mutate references, use `let` instead of `var`.
 
   > Why? `let` is block-scoped rather than function-scoped like `var`.
 
@@ -89,7 +91,8 @@ This section has been eliminated in the Meteor version, because it does not spec
 
 ## Objects
 
-  - [3.1](#3.1) <a name='3.1'></a>  Use the literal syntax for object creation.
+  - [3.1](#3.1) <a name='3.1'></a> <a href="http://eslint.org/docs/rules/no-new-object"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
+    Use the literal syntax for object creation.
 
     ```javascript
     // bad
@@ -202,7 +205,8 @@ This section has been eliminated in the Meteor version, because it does not spec
 
 ## Arrays
 
-  - [4.1](#4.1) <a name='4.1'></a> Use the literal syntax for array creation.
+  - [4.1](#4.1) <a name='4.1'></a> <a href="http://eslint.org/docs/rules/no-array-constructor"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
+    Use the literal syntax for array creation.
 
     ```javascript
     // bad
@@ -319,7 +323,8 @@ This section has been eliminated in the Meteor version, because it does not spec
 
 ## Strings
 
-  - [6.1](#6.1) <a name='6.1'></a> Use single quotes `''` for strings.
+  - [6.1](#6.1) <a name='6.1'></a> <a href="http://eslint.org/docs/rules/quotes"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
+    Use single quotes `''` for strings.
 
     ```javascript
     // bad
@@ -329,7 +334,8 @@ This section has been eliminated in the Meteor version, because it does not spec
     const name = 'Capt. Janeway';
     ```
 
-  - [6.2](#6.2) <a name='6.2'></a> Single-line strings longer than 80 characters should be written across multiple lines using string concatenation. If you are writing a multiline string, use template strings as in [6.4](#6.4). This is a change in the Meteor edition. Note: If overused, long strings with concatenation could impact performance. [jsPerf](http://jsperf.com/ya-string-concat) & [Discussion](https://github.com/airbnb/javascript/issues/40).
+  - [6.2](#6.2) <a name='6.2'></a> <a href="http://eslint.org/docs/rules/max-len"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
+    Single-line strings longer than 80 characters should be written across multiple lines using string concatenation. If you are writing a multiline string, use template strings as in [6.4](#6.4). This is a change in the Meteor edition. Note: If overused, long strings with concatenation could impact performance. [jsPerf](http://jsperf.com/ya-string-concat) & [Discussion](https://github.com/airbnb/javascript/issues/40).
 
     ```javascript
     // bad
@@ -376,7 +382,8 @@ This section has been eliminated in the Meteor version, because it does not spec
 
 ## Functions
 
-  - [7.1](#7.1) <a name='7.1'></a> Use function declarations instead of function expressions.
+  - [7.1](#7.1) <a name='7.1'></a> <a href="http://eslint.org/docs/rules/func-style"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
+    Use function declarations instead of function expressions.
 
   > Why? Function declarations are named, so they're easier to identify in call stacks. Also, the whole body of a function declaration is hoisted, whereas only the reference of a function expression is hoisted. This rule makes it possible to always use [Arrow Functions](#arrow-functions) in place of function expressions.
 
@@ -391,7 +398,8 @@ This section has been eliminated in the Meteor version, because it does not spec
     ```
 
   - [7.2](#7.2) <a name='7.2'></a> Removed in the Meteor edition.
-  - [7.3](#7.3) <a name='7.3'></a> Never declare a function in a non-function block (if, while, etc). Assign the function to a variable instead. Browsers will allow you to do it, but they all interpret it differently, which is bad news bears. [7.4](#7.4) <a name='7.4'></a> **Note:** ECMA-262 defines a `block` as a list of statements. A function declaration is not a statement. [Read ECMA-262's note on this issue](http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf#page=97). This note merged into the previous rule in the Meteor edition.
+  - [7.3](#7.3) <a name='7.3'></a> <a href="http://eslint.org/docs/rules/no-inner-declarations"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
+    Never declare a function in a non-function block (if, while, etc). Assign the function to a variable instead. Browsers will allow you to do it, but they all interpret it differently, which is bad news bears. [7.4](#7.4) <a name='7.4'></a> **Note:** ECMA-262 defines a `block` as a list of statements. A function declaration is not a statement. [Read ECMA-262's note on this issue](http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf#page=97). This note merged into the previous rule in the Meteor edition.
 
     ```javascript
     // bad
@@ -410,7 +418,8 @@ This section has been eliminated in the Meteor version, because it does not spec
     }
     ```
 
-  - [7.5](#7.5) <a name='7.5'></a> Never name a parameter `arguments`. This will take precedence over the `arguments` object that is given to every function scope.
+  - [7.5](#7.5) <a name='7.5'></a> <a href="http://eslint.org/docs/rules/no-shadow-restricted-names"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
+    Never name a parameter `arguments`. This will take precedence over the `arguments` object that is given to every function scope.
 
     ```javascript
     // bad
@@ -1065,7 +1074,8 @@ This section has been eliminated in the Meteor version, because it does not spec
 
 ## Whitespace
 
-  - [18.1](#18.1) <a name='18.1'></a> Use soft tabs set to 2 spaces.
+  - [18.1](#18.1) <a name='18.1'></a> <a href="http://eslint.org/docs/rules/indent"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
+    Use soft tabs set to 2 spaces.
 
     ```javascript
     // bad
@@ -1084,7 +1094,8 @@ This section has been eliminated in the Meteor version, because it does not spec
     }
     ```
 
-  - [18.2](#18.2) <a name='18.2'></a> Place 1 space before the leading brace.
+  - [18.2](#18.2) <a name='18.2'></a> <a href="http://eslint.org/docs/rules/space-before-blocks"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
+    Place 1 space before the leading brace.
 
     ```javascript
     // bad
@@ -1110,7 +1121,8 @@ This section has been eliminated in the Meteor version, because it does not spec
     });
     ```
 
-  - [18.3](#18.3) <a name='18.3'></a> Place 1 space before the opening parenthesis in control statements (`if`, `while` etc.). Place no space before the argument list in function calls and declarations.
+  - [18.3](#18.3) <a name='18.3'></a> <a href="http://eslint.org/docs/rules/space-before-function-paren"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
+    Place 1 space before the opening parenthesis in control statements (`if`, `while` etc.). Place no space before the argument list in function calls and declarations.
 
     ```javascript
     // bad
@@ -1134,7 +1146,8 @@ This section has been eliminated in the Meteor version, because it does not spec
     }
     ```
 
-  - [18.4](#18.4) <a name='18.4'></a> Set off operators with spaces.
+  - [18.4](#18.4) <a name='18.4'></a> <a href="http://eslint.org/docs/rules/space-infix-ops"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
+    Set off operators with spaces.
 
     ```javascript
     // bad
@@ -1333,7 +1346,8 @@ This section has been eliminated in the Meteor version, because it does not spec
 
 ## Semicolons
 
-  - [20.1](#20.1) <a name='20.1'></a> **Yup.**
+  - [20.1](#20.1) <a name='20.1'></a> <a href="http://eslint.org/docs/rules/semi"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
+    **Yup.**
 
     ```javascript
     // bad
@@ -1375,7 +1389,8 @@ This section has been eliminated in the Meteor version, because it does not spec
     const totalScore = String(this.reviewScore);
     ```
 
-  - [21.3](#21.3) <a name='21.3'></a> Use `parseInt` for Numbers and always with a radix for type casting.
+  - [21.3](#21.3) <a name='21.3'></a> <a href="http://eslint.org/docs/rules/radix"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
+    Use `parseInt` for Numbers and always with a radix for type casting.
 
     ```javascript
     const inputValue = '4';
@@ -1453,7 +1468,8 @@ This section has been eliminated in the Meteor version, because it does not spec
     }
     ```
 
-  - [22.2](#22.2) <a name='22.2'></a> Use camelCase when naming objects, functions, and instances.
+  - [22.2](#22.2) <a name='22.2'></a> <a href="http://eslint.org/docs/rules/camelcase"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
+    Use camelCase when naming objects, functions, and instances.
 
     ```javascript
     // bad
