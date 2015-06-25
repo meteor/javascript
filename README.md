@@ -4,7 +4,7 @@
 
 *A mostly reasonable approach to JavaScript, with some Meteor flavor*
 
-
+All rules that are automatically linted have the ESLint logo, with a link to the rule, like so: <a href="http://eslint.org/"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
 
 ## Table of Contents
 
