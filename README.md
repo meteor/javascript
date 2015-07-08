@@ -1632,10 +1632,9 @@ This section has been eliminated in the Meteor version, because it does not spec
   - [22.6](#22.6) <a name='22.6'></a> If your file exports a single class, your filename should be exactly the name of the class.
     ```javascript
     // file contents
-    class CheckBox {
+    export default class CheckBox {
       // ...
     }
-    export default CheckBox;
 
     // in some other file
     // bad
@@ -1668,6 +1667,27 @@ This section has been eliminated in the Meteor version, because it does not spec
     export default AirbnbStyleGuide;
     ```
 
+  - [22.9](#22.9) <a name='22.9'></a> Prefer `export`ing declarations
+    where they are declared, rather than at the end of the file:
+
+    ```javascript
+    // bad
+    function createUser(name) { ... }
+    function getOrCreateUser(name) { ... }
+    // ... rest of file ...
+    export {
+      createUser,
+      getOrCreateUser,
+    }
+
+    // good
+    export function createUser(name) { ... }
+    export function getOrCreateUser(name) { ... }
+    // ... rest of file ...
+    ```
+
+    This style ensures that the set of `export`s remains up-to-date as
+    declarations are added or removed.
 
 **[⬆ back to top](#table-of-contents)**
 
