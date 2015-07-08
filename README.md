@@ -1744,6 +1744,31 @@ This section has been eliminated in the Meteor version, because it does not spec
     }
     ```
 
+  - [23.5](#23.5) <a name='23.5'></a> Strongly prefer accessor methods to
+    defining ES5 getter and setter properties:
+
+    ```javascript
+    class Jedi {
+      constructor({ lightsaber = blue }) {
+        this._lightsaber = lightsaber;
+      }
+
+      // bad; use a normal getter method instead
+      get lightsaber() {
+        return this._lightsaber;
+      }
+
+      // bad; use a normal setter method instead
+      set lightsaber(newLightSaber) {
+        return this._lightsaber = newLightSaber;
+      }
+    }
+    ```
+
+    Not only is this style rarely more readable than the method
+    equivalent, performance can suffer dramatically when code relies on
+    specially-defined properties rather than just using normal properties.
+
 **[⬆ back to top](#table-of-contents)**
 
 
