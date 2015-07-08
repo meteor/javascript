@@ -1452,7 +1452,7 @@ This section has been eliminated in the Meteor version, because it does not spec
     ```
 
   - [21.3](#21.3) <a name='21.3'></a> <a href="http://eslint.org/docs/rules/radix"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
-    Use `parseInt` for Numbers and always with a radix for type casting.
+    Use `parseInt` to convert strings to numbers, and always with a radix argument.
 
     ```javascript
     const inputValue = '4';
@@ -1461,22 +1461,40 @@ This section has been eliminated in the Meteor version, because it does not spec
     const val = new Number(inputValue);
 
     // bad
-    const val = +inputValue;
-
-    // bad
     const val = inputValue >> 0;
 
     // bad
     const val = parseInt(inputValue);
 
     // good
-    const val = Number(inputValue);
-
-    // good
     const val = parseInt(inputValue, 10);
     ```
 
-  - [21.4](#21.4) <a name='21.4'></a> If for whatever reason you are doing something wild and `parseInt` is your bottleneck and need to use Bitshift for [performance reasons](http://jsperf.com/coercion-vs-casting/3), leave a comment explaining why and what you're doing.
+    Use the `Number` constructor (without `new`) to coerce values that are
+    not strings to numbers, as in `Number(new Date) + 1000`. The unary `+`
+    operator is an acceptable shorthand for `Number(...)`, but only if the
+    expression is not involved in a larger expression, as in `+new Date`.
+
+    Note that the `Number` constructor will return `NaN` if the value
+    cannot be converted to a number, including when the value is
+    undefined. If the output might be `NaN` (likely because the input
+    might be undefined), be sure to test for that possibility after
+    attempting the conversion:
+
+    ```javascript
+    let val = Number(inputValue);
+    if (isNaN(val)) {
+      val = 0;
+    }
+    ```
+
+    Better yet, avoid the possibility of `NaN` through other means, such
+    as providing default values for optional function parameters.
+
+  - [21.4](#21.4) <a name='21.4'></a> If you have a very good reason for
+    using some other kind of coercion technique, be it for performance or
+    because you need a very specific output behavior, then you should
+    absolutely leave a comment justifying your choice.
 
     ```javascript
     // good
@@ -1486,6 +1504,11 @@ This section has been eliminated in the Meteor version, because it does not spec
      * Number made it a lot faster.
      */
     const val = inputValue >> 0;
+
+    // good
+    // Truthy inputs must always be coerced to 1, and falsy inputs must
+    // always be cocerced to 0.
+    const zeroOrOne = inputValue ? 1 : 0;
     ```
 
   - [21.5](#21.5) <a name='21.5'></a> **Note:** Be careful when using bitshift operations. Numbers are represented as [64-bit values](http://es5.github.io/#x4.3.19), but Bitshift operations always return a 32-bit integer ([source](http://es5.github.io/#x11.7)). Bitshift can lead to unexpected behavior for integer values larger than 32 bits. [Discussion](https://github.com/airbnb/javascript/issues/109). Largest signed 32-bit Int is 2,147,483,647:
