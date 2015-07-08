@@ -201,6 +201,27 @@ This section has been eliminated in the Meteor version, because it does not spec
     };
     ```
 
+  - [3.8](#3.8) <a name='3.8'></a> Use object spreads `...` to copy objects.
+
+    ```javascript
+    // bad
+    const copy = {};
+    Object.keys(obj).forEach((key) => {
+      copy[key] = obj[key];
+    });
+
+    // bad
+    const copy = {};
+    for (var key in obj) {
+      if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        copy[key] = obj[key];
+      }
+    }
+
+    // good
+    const copy = { ...obj };
+    ```
+
 **[⬆ back to top](#table-of-contents)**
 
 ## Arrays
