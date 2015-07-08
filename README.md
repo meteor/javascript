@@ -515,6 +515,44 @@ This section has been eliminated in the Meteor version, because it does not spec
   count();  // 3
   ```
 
+  - [7.9](#7.9) <a name='7.9'></a> Use argument spreads to interpolate
+    arguments in function calls.
+
+    ```javascript
+    const prefix = [a, b];
+    const suffix = [c, d, e];
+
+    // bad
+    prefix.push.apply(prefix, suffix);
+
+    // good
+    prefix.push(...suffix);
+
+    // bad
+    someFunction.apply(null, prefix.concat(suffix));
+
+    // good
+    someFunction(...prefix, ...suffix);
+    ```
+
+    The exception to this advice is when you really need to use a
+    different, non-`null` value of `this`. Then `.apply` (or `.call`) is
+    probably a better option.
+
+    The same goes for `new` expressions.
+
+    ```javascript
+    class A {
+      constructor(...args) { ... }
+    }
+
+    // really bad
+    const instance = Object.create(A.prototype);
+    A.prototype.constructor.apply(instance, prefix.concat(suffix));
+
+    // good
+    const instance = new A(...prefix, ...suffix);
+    ```
 
 **[⬆ back to top](#table-of-contents)**
 
