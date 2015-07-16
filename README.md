@@ -1,10 +1,10 @@
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/airbnb/javascript?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-# Airbnb JavaScript Style Guide() {
+# Airbnb JavaScript Style Guide, Meteor edition
 
-*A mostly reasonable approach to JavaScript*
+*A mostly reasonable approach to JavaScript, with some Meteor flavor*
 
-[For the ES5-only guide click here](es5/).
+All rules that are automatically linted have the ESLint logo, with a link to the rule, like so: <a href="http://eslint.org/"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
 
 ## Table of Contents
 
@@ -35,54 +35,24 @@
   1. [jQuery](#jquery)
   1. [ECMAScript 5 Compatibility](#ecmascript-5-compatibility)
   1. [ECMAScript 6 Styles](#ecmascript-6-styles)
-  1. [Testing](#testing)
-  1. [Performance](#performance)
-  1. [Resources](#resources)
-  1. [In the Wild](#in-the-wild)
-  1. [Translation](#translation)
-  1. [The JavaScript Style Guide Guide](#the-javascript-style-guide-guide)
-  1. [Chat With Us About Javascript](#chat-with-us-about-javascript)
+  1. [Testing (in AirBnB guide)](https://github.com/airbnb/javascript#testing)
+  1. [Performance (in AirBnB guide)](https://github.com/airbnb/javascript#performance)
+  1. [Resources (in AirBnB guide)](https://github.com/airbnb/javascript#resources)
+  1. [In the Wild (in AirBnB guide)](https://github.com/airbnb/javascript#in-the-wild)
+  1. [Translation (in AirBnB guide)](https://github.com/airbnb/javascript#translation)
+  1. [The JavaScript Style Guide Guide (in AirBnB guide)](https://github.com/airbnb/javascript#the-javascript-style-guide-guide)
+  1. [Chat With Us About Javascript (in AirBnB guide)](https://github.com/airbnb/javascript#chat-with-us-about-javascript)
   1. [Contributors](#contributors)
   1. [License](#license)
 
 ## Types
 
-  - [1.1](#1.1) <a name='1.1'></a> **Primitives**: When you access a primitive type you work directly on its value.
-
-    + `string`
-    + `number`
-    + `boolean`
-    + `null`
-    + `undefined`
-
-    ```javascript
-    const foo = 1;
-    let bar = foo;
-
-    bar = 9;
-
-    console.log(foo, bar); // => 1, 9
-    ```
-  - [1.2](#1.2) <a name='1.2'></a> **Complex**: When you access a complex type you work on a reference to its value.
-
-    + `object`
-    + `array`
-    + `function`
-
-    ```javascript
-    const foo = [1, 2];
-    const bar = foo;
-
-    bar[0] = 9;
-
-    console.log(foo[0], bar[0]); // => 9, 9
-    ```
-
-**[⬆ back to top](#table-of-contents)**
+This section has been eliminated in the Meteor version, because it does not specify any style rules.
 
 ## References
 
-  - [2.1](#2.1) <a name='2.1'></a> Use `const` for all of your references; avoid using `var`.
+  - [2.1](#2.1) <a name='2.1'></a> <a href="http://eslint.org/docs/rules/no-var"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
+    Use `const` for all of your references; avoid using `var`.
 
   > Why? This ensures that you can't reassign your references (mutation), which can lead to bugs and difficult to comprehend code.
 
@@ -96,7 +66,8 @@
     const b = 2;
     ```
 
-  - [2.2](#2.2) <a name='2.2'></a> If you must mutate references, use `let` instead of `var`.
+  - [2.2](#2.2) <a name='2.2'></a> <a href="http://eslint.org/docs/rules/no-var"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
+    If you must mutate references, use `let` instead of `var`.
 
   > Why? `let` is block-scoped rather than function-scoped like `var`.
 
@@ -114,23 +85,14 @@
     }
     ```
 
-  - [2.3](#2.3) <a name='2.3'></a> Note that both `let` and `const` are block-scoped.
-
-    ```javascript
-    // const and let only exist in the blocks they are defined in.
-    {
-      let a = 1;
-      const b = 1;
-    }
-    console.log(a); // ReferenceError
-    console.log(b); // ReferenceError
-    ```
+  - [2.3](#2.3) <a name='2.3'></a> This section removed in the Meteor edition, because it does not specify any style rules.
 
 **[⬆ back to top](#table-of-contents)**
 
 ## Objects
 
-  - [3.1](#3.1) <a name='3.1'></a> Use the literal syntax for object creation.
+  - [3.1](#3.1) <a name='3.1'></a> <a href="http://eslint.org/docs/rules/no-new-object"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
+    Use the literal syntax for object creation.
 
     ```javascript
     // bad
@@ -140,40 +102,7 @@
     const item = {};
     ```
 
-  - [3.2](#3.2) <a name='3.2'></a> Don't use [reserved words](http://es5.github.io/#x7.6.1) as keys. It won't work in IE8. [More info](https://github.com/airbnb/javascript/issues/61).
-
-    ```javascript
-    // bad
-    const superman = {
-      default: { clark: 'kent' },
-      private: true,
-    };
-
-    // good
-    const superman = {
-      defaults: { clark: 'kent' },
-      hidden: true,
-    };
-    ```
-
-  - [3.3](#3.3) <a name='3.3'></a> Use readable synonyms in place of reserved words.
-
-    ```javascript
-    // bad
-    const superman = {
-      class: 'alien',
-    };
-
-    // bad
-    const superman = {
-      klass: 'alien',
-    };
-
-    // good
-    const superman = {
-      type: 'alien',
-    };
-    ```
+  - [3.2](#3.2) <a name='3.2'></a> and [3.3](#3.3) <a name='3.3'></a> eliminated in the Meteor edition because Babel can compile reserved words to work fine in old browsers.
 
   <a name="es6-computed-properties"></a>
   - [3.4](#3.4) <a name='3.4'></a> Use computed property names when creating objects with dynamic property names.
@@ -272,11 +201,33 @@
     };
     ```
 
+  - [3.8](#3.8) <a name='3.8'></a> Use object spreads `...` to copy objects.
+
+    ```javascript
+    // bad
+    const copy = {};
+    Object.keys(obj).forEach((key) => {
+      copy[key] = obj[key];
+    });
+
+    // bad
+    const copy = {};
+    for (var key in obj) {
+      if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        copy[key] = obj[key];
+      }
+    }
+
+    // good
+    const copy = { ...obj };
+    ```
+
 **[⬆ back to top](#table-of-contents)**
 
 ## Arrays
 
-  - [4.1](#4.1) <a name='4.1'></a> Use the literal syntax for array creation.
+  - [4.1](#4.1) <a name='4.1'></a> <a href="http://eslint.org/docs/rules/no-array-constructor"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
+    Use the literal syntax for array creation.
 
     ```javascript
     // bad
@@ -393,7 +344,8 @@
 
 ## Strings
 
-  - [6.1](#6.1) <a name='6.1'></a> Use single quotes `''` for strings.
+  - [6.1](#6.1) <a name='6.1'></a> <a href="http://eslint.org/docs/rules/quotes"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
+    Use single quotes `''` for strings.
 
     ```javascript
     // bad
@@ -403,8 +355,8 @@
     const name = 'Capt. Janeway';
     ```
 
-  - [6.2](#6.2) <a name='6.2'></a> Strings longer than 80 characters should be written across multiple lines using string concatenation.
-  - [6.3](#6.3) <a name='6.3'></a> Note: If overused, long strings with concatenation could impact performance. [jsPerf](http://jsperf.com/ya-string-concat) & [Discussion](https://github.com/airbnb/javascript/issues/40).
+  - [6.2](#6.2) <a name='6.2'></a> <a href="http://eslint.org/docs/rules/max-len"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
+    Single-line strings longer than 80 characters should be written across multiple lines using string concatenation. If you are writing a multiline string, use template strings as in [6.4](#6.4). This is a change in the Meteor edition. Note: If overused, long strings with concatenation could impact performance. [jsPerf](http://jsperf.com/ya-string-concat) & [Discussion](https://github.com/airbnb/javascript/issues/40).
 
     ```javascript
     // bad
@@ -421,6 +373,8 @@
       'of Batman. When you stop to think about how Batman had anything to do ' +
       'with this, you would get nowhere fast.';
     ```
+
+   - [6.3](#6.3) <a name='6.3'></a> This non-rule merged as a note into the previous rule in the Meteor edition.
 
   <a name="es6-template-literals"></a>
   - [6.4](#6.4) <a name='6.4'></a> When programmatically building up strings, use template strings instead of concatenation.
@@ -449,7 +403,8 @@
 
 ## Functions
 
-  - [7.1](#7.1) <a name='7.1'></a> Use function declarations instead of function expressions.
+  - [7.1](#7.1) <a name='7.1'></a> <a href="http://eslint.org/docs/rules/func-style"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
+    Use function declarations instead of function expressions.
 
   > Why? Function declarations are named, so they're easier to identify in call stacks. Also, the whole body of a function declaration is hoisted, whereas only the reference of a function expression is hoisted. This rule makes it possible to always use [Arrow Functions](#arrow-functions) in place of function expressions.
 
@@ -463,17 +418,9 @@
     }
     ```
 
-  - [7.2](#7.2) <a name='7.2'></a> Function expressions:
-
-    ```javascript
-    // immediately-invoked function expression (IIFE)
-    (() => {
-      console.log('Welcome to the Internet. Please follow me.');
-    })();
-    ```
-
-  - [7.3](#7.3) <a name='7.3'></a> Never declare a function in a non-function block (if, while, etc). Assign the function to a variable instead. Browsers will allow you to do it, but they all interpret it differently, which is bad news bears.
-  - [7.4](#7.4) <a name='7.4'></a> **Note:** ECMA-262 defines a `block` as a list of statements. A function declaration is not a statement. [Read ECMA-262's note on this issue](http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf#page=97).
+  - [7.2](#7.2) <a name='7.2'></a> Removed in the Meteor edition.
+  - [7.3](#7.3) <a name='7.3'></a> <a href="http://eslint.org/docs/rules/no-inner-declarations"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
+    Never declare a function in a non-function block (if, while, etc). Assign the function to a variable instead. Browsers will allow you to do it, but they all interpret it differently, which is bad news bears. [7.4](#7.4) <a name='7.4'></a> **Note:** ECMA-262 defines a `block` as a list of statements. A function declaration is not a statement. [Read ECMA-262's note on this issue](http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf#page=97). This note merged into the previous rule in the Meteor edition.
 
     ```javascript
     // bad
@@ -492,7 +439,8 @@
     }
     ```
 
-  - [7.5](#7.5) <a name='7.5'></a> Never name a parameter `arguments`. This will take precedence over the `arguments` object that is given to every function scope.
+  - [7.5](#7.5) <a name='7.5'></a> <a href="http://eslint.org/docs/rules/no-shadow-restricted-names"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
+    Never name a parameter `arguments`. This will take precedence over the `arguments` object that is given to every function scope.
 
     ```javascript
     // bad
@@ -567,6 +515,44 @@
   count();  // 3
   ```
 
+  - [7.9](#7.9) <a name='7.9'></a> Use argument spreads to interpolate
+    arguments in function calls.
+
+    ```javascript
+    const prefix = [a, b];
+    const suffix = [c, d, e];
+
+    // bad
+    prefix.push.apply(prefix, suffix);
+
+    // good
+    prefix.push(...suffix);
+
+    // bad
+    someFunction.apply(null, prefix.concat(suffix));
+
+    // good
+    someFunction(...prefix, ...suffix);
+    ```
+
+    The exception to this advice is when you really need to use a
+    different, non-`null` value of `this`. Then `.apply` (or `.call`) is
+    probably a better option.
+
+    The same goes for `new` expressions.
+
+    ```javascript
+    class A {
+      constructor(...args) { ... }
+    }
+
+    // really bad
+    const instance = Object.create(A.prototype);
+    A.prototype.constructor.apply(instance, prefix.concat(suffix));
+
+    // good
+    const instance = new A(...prefix, ...suffix);
+    ```
 
 **[⬆ back to top](#table-of-contents)**
 
@@ -950,96 +936,10 @@
 
 ## Hoisting
 
-  - [14.1](#14.1) <a name='14.1'></a> `var` declarations get hoisted to the top of their scope, their assignment does not. `const` and `let` declarations are blessed with a new concept called [Temporal Dead Zones (TDZ)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let#Temporal_dead_zone_and_errors_with_let). It's important to know why [typeof is no longer safe](http://es-discourse.com/t/why-typeof-is-no-longer-safe/15).
+  - [14.1](#14.1) <a name='14.1'></a> [14.2](#14.2) <a name='14.2'></a> [14.3](#14.3) <a name='14.3'></a> [14.4](#14.4) <a name='14.4'></a>  Non-rules removed in the Meteor edition.
 
-    ```javascript
-    // we know this wouldn't work (assuming there
-    // is no notDefined global variable)
-    function example() {
-      console.log(notDefined); // => throws a ReferenceError
-    }
 
-    // creating a variable declaration after you
-    // reference the variable will work due to
-    // variable hoisting. Note: the assignment
-    // value of `true` is not hoisted.
-    function example() {
-      console.log(declaredButNotAssigned); // => undefined
-      var declaredButNotAssigned = true;
-    }
-
-    // The interpreter is hoisting the variable
-    // declaration to the top of the scope,
-    // which means our example could be rewritten as:
-    function example() {
-      let declaredButNotAssigned;
-      console.log(declaredButNotAssigned); // => undefined
-      declaredButNotAssigned = true;
-    }
-
-    // using const and let
-    function example() {
-      console.log(declaredButNotAssigned); // => throws a ReferenceError
-      console.log(typeof declaredButNotAssigned); // => throws a ReferenceError
-      const declaredButNotAssigned = true;
-    }
-    ```
-
-  - [14.2](#14.2) <a name='14.2'></a> Anonymous function expressions hoist their variable name, but not the function assignment.
-
-    ```javascript
-    function example() {
-      console.log(anonymous); // => undefined
-
-      anonymous(); // => TypeError anonymous is not a function
-
-      var anonymous = function() {
-        console.log('anonymous function expression');
-      };
-    }
-    ```
-
-  - [14.3](#14.3) <a name='14.3'></a> Named function expressions hoist the variable name, not the function name or the function body.
-
-    ```javascript
-    function example() {
-      console.log(named); // => undefined
-
-      named(); // => TypeError named is not a function
-
-      superPower(); // => ReferenceError superPower is not defined
-
-      var named = function superPower() {
-        console.log('Flying');
-      };
-    }
-
-    // the same is true when the function name
-    // is the same as the variable name.
-    function example() {
-      console.log(named); // => undefined
-
-      named(); // => TypeError named is not a function
-
-      var named = function named() {
-        console.log('named');
-      }
-    }
-    ```
-
-  - [14.4](#14.4) <a name='14.4'></a> Function declarations hoist their name and the function body.
-
-    ```javascript
-    function example() {
-      superPower(); // => Flying
-
-      function superPower() {
-        console.log('Flying');
-      }
-    }
-    ```
-
-  - For more information refer to [JavaScript Scoping & Hoisting](http://www.adequatelygood.com/2010/2/JavaScript-Scoping-and-Hoisting) by [Ben Cherry](http://www.adequatelygood.com/).
+  - For more information refer to [JavaScript Scoping & Hoisting](http://www.adequatelygood.com/2010/2/JavaS cript-Scoping-and-Hoisting) by [Ben Cherry](http://www.adequatelygood.com/).
 
 **[⬆ back to top](#table-of-contents)**
 
@@ -1047,7 +947,8 @@
 ## Comparison Operators & Equality
 
   - [15.1](#15.1) <a name='15.1'></a> Use `===` and `!==` over `==` and `!=`.
-  - [15.2](#15.2) <a name='15.2'></a> Conditional statements such as the `if` statement evaulate their expression using coercion with the `ToBoolean` abstract method and always follow these simple rules:
+  - [15.2](#15.2)<a name='15.2'></a>/[15.3](#15.3)<a name='15.3'></a>/[15.4](#15.4)<a name='15.4'></a>
+    Use shortcuts. Note: Conditional statements such as the `if` statement evaluate their expression using coercion with the `ToBoolean` abstract method and always follow the simple rules below. For more information see [Truth Equality and JavaScript](http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/#more-2108) by Angus Croll. (15.2, 15.3, and 15.4 merged in Meteor edition):
 
     + **Objects** evaluate to **true**
     + **Undefined** evaluates to **false**
@@ -1055,15 +956,6 @@
     + **Booleans** evaluate to **the value of the boolean**
     + **Numbers** evaluate to **false** if **+0, -0, or NaN**, otherwise **true**
     + **Strings** evaluate to **false** if an empty string `''`, otherwise **true**
-
-    ```javascript
-    if ([0]) {
-      // true
-      // An array is an object, objects evaluate to true
-    }
-    ```
-
-  - [15.3](#15.3) <a name='15.3'></a> Use shortcuts.
 
     ```javascript
     // bad
@@ -1085,16 +977,21 @@
     if (collection.length) {
       // ...stuff...
     }
-    ```
 
-  - [15.4](#15.4) <a name='15.4'></a> For more information see [Truth Equality and JavaScript](http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/#more-2108) by Angus Croll.
+    // note
+    if ([0]) {
+      // true
+      // An array is an object, objects evaluate to true
+    }
+    ```
 
 **[⬆ back to top](#table-of-contents)**
 
 
 ## Blocks
 
-  - [16.1](#16.1) <a name='16.1'></a> Use braces with all multi-line blocks.
+  - [16.1](#16.1) <a name='16.1'></a> <a href="http://eslint.org/docs/rules/curly"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
+    Use braces with all multi-line blocks.
 
     ```javascript
     // bad
@@ -1118,7 +1015,8 @@
     }
     ```
 
-  - [16.2](#16.2) <a name='16.2'></a> If you're using multi-line blocks with `if` and `else`, put `else` on the same line as your
+  - [16.2](#16.2) <a name='16.2'></a> <a href="http://eslint.org/docs/rules/brace-style"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
+    If you're using multi-line blocks with `if` and `else`, put `else` on the same line as your
     `if` block's closing brace.
 
     ```javascript
@@ -1146,7 +1044,7 @@
 
 ## Comments
 
-  - [17.1](#17.1) <a name='17.1'></a> Use `/** ... */` for multi-line comments. Include a description, specify types and values for all parameters and return values.
+  - [17.1](#17.1) <a name='17.1'></a> Use `/** ... */` for method doc comments. Include a description, specify types and values for all parameters and return values. In the Meteor edition, this rule has been updated to only refer to doc comments.
 
     ```javascript
     // bad
@@ -1178,7 +1076,7 @@
     }
     ```
 
-  - [17.2](#17.2) <a name='17.2'></a> Use `//` for single line comments. Place single line comments on a newline above the subject of the comment. Put an empty line before the comment.
+  - [17.2](#17.2) <a name='17.2'></a> Use `//` for all other comments. Place single line comments on a newline above the subject of the comment. Put an empty line before the comment. Has been updated in Meteor edition to refer to all non-doc comments.
 
     ```javascript
     // bad
@@ -1237,7 +1135,8 @@
 
 ## Whitespace
 
-  - [18.1](#18.1) <a name='18.1'></a> Use soft tabs set to 2 spaces.
+  - [18.1](#18.1) <a name='18.1'></a> <a href="http://eslint.org/docs/rules/indent"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
+    Use soft tabs set to 2 spaces.
 
     ```javascript
     // bad
@@ -1256,7 +1155,8 @@
     }
     ```
 
-  - [18.2](#18.2) <a name='18.2'></a> Place 1 space before the leading brace.
+  - [18.2](#18.2) <a name='18.2'></a> <a href="http://eslint.org/docs/rules/space-before-blocks"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
+    Place 1 space before the leading brace.
 
     ```javascript
     // bad
@@ -1282,7 +1182,8 @@
     });
     ```
 
-  - [18.3](#18.3) <a name='18.3'></a> Place 1 space before the opening parenthesis in control statements (`if`, `while` etc.). Place no space before the argument list in function calls and declarations.
+  - [18.3](#18.3) <a name='18.3'></a> <a href="http://eslint.org/docs/rules/space-before-function-paren"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
+    Place 1 space before the opening parenthesis in control statements (`if`, `while` etc.). Place no space before the argument list in function calls and declarations.
 
     ```javascript
     // bad
@@ -1306,7 +1207,8 @@
     }
     ```
 
-  - [18.4](#18.4) <a name='18.4'></a> Set off operators with spaces.
+  - [18.4](#18.4) <a name='18.4'></a> <a href="http://eslint.org/docs/rules/space-infix-ops"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
+    Set off operators with spaces.
 
     ```javascript
     // bad
@@ -1422,7 +1324,8 @@
 
 ## Commas
 
-  - [19.1](#19.1) <a name='19.1'></a> Leading commas: **Nope.**
+  - [19.1](#19.1) <a name='19.1'></a> <a href="http://eslint.org/docs/rules/comma-style"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
+    Leading commas: **Nope.**
 
     ```javascript
     // bad
@@ -1456,7 +1359,8 @@
     };
     ```
 
-  - [19.2](#19.2) <a name='19.2'></a> Additional trailing comma: **Yup.**
+  - [19.2](#19.2) <a name='19.2'></a> <a href="http://eslint.org/docs/rules/comma-dangle"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
+    Additional trailing comma: **Yup.**
 
   > Why? This leads to cleaner git diffs. Also, transpilers like Babel will remove the additional trailing comma in the transpiled code which means you don't have to worry about the [trailing comma problem](es5/README.md#commas) in legacy browsers.
 
@@ -1504,7 +1408,8 @@
 
 ## Semicolons
 
-  - [20.1](#20.1) <a name='20.1'></a> **Yup.**
+  - [20.1](#20.1) <a name='20.1'></a> <a href="http://eslint.org/docs/rules/semi"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
+    **Yup.**
 
     ```javascript
     // bad
@@ -1546,7 +1451,8 @@
     const totalScore = String(this.reviewScore);
     ```
 
-  - [21.3](#21.3) <a name='21.3'></a> Use `parseInt` for Numbers and always with a radix for type casting.
+  - [21.3](#21.3) <a name='21.3'></a> <a href="http://eslint.org/docs/rules/radix"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
+    Use `parseInt` to convert strings to numbers, and always with a radix argument.
 
     ```javascript
     const inputValue = '4';
@@ -1555,22 +1461,40 @@
     const val = new Number(inputValue);
 
     // bad
-    const val = +inputValue;
-
-    // bad
     const val = inputValue >> 0;
 
     // bad
     const val = parseInt(inputValue);
 
     // good
-    const val = Number(inputValue);
-
-    // good
     const val = parseInt(inputValue, 10);
     ```
 
-  - [21.4](#21.4) <a name='21.4'></a> If for whatever reason you are doing something wild and `parseInt` is your bottleneck and need to use Bitshift for [performance reasons](http://jsperf.com/coercion-vs-casting/3), leave a comment explaining why and what you're doing.
+    Use the `Number` constructor (without `new`) to coerce values that are
+    not strings to numbers, as in `Number(new Date) + 1000`. The unary `+`
+    operator is an acceptable shorthand for `Number(...)`, but only if the
+    expression is not involved in a larger expression, as in `+new Date`.
+
+    Note that the `Number` constructor will return `NaN` if the value
+    cannot be converted to a number, including when the value is
+    undefined. If the output might be `NaN` (likely because the input
+    might be undefined), be sure to test for that possibility after
+    attempting the conversion:
+
+    ```javascript
+    let val = Number(inputValue);
+    if (isNaN(val)) {
+      val = 0;
+    }
+    ```
+
+    Better yet, avoid the possibility of `NaN` through other means, such
+    as providing default values for optional function parameters.
+
+  - [21.4](#21.4) <a name='21.4'></a> If you have a very good reason for
+    using some other kind of coercion technique, be it for performance or
+    because you need a very specific output behavior, then you should
+    absolutely leave a comment justifying your choice.
 
     ```javascript
     // good
@@ -1580,6 +1504,11 @@
      * Number made it a lot faster.
      */
     const val = inputValue >> 0;
+
+    // good
+    // Truthy inputs must always be coerced to 1, and falsy inputs must
+    // always be cocerced to 0.
+    const zeroOrOne = inputValue ? 1 : 0;
     ```
 
   - [21.5](#21.5) <a name='21.5'></a> **Note:** Be careful when using bitshift operations. Numbers are represented as [64-bit values](http://es5.github.io/#x4.3.19), but Bitshift operations always return a 32-bit integer ([source](http://es5.github.io/#x11.7)). Bitshift can lead to unexpected behavior for integer values larger than 32 bits. [Discussion](https://github.com/airbnb/javascript/issues/109). Largest signed 32-bit Int is 2,147,483,647:
@@ -1624,7 +1553,8 @@
     }
     ```
 
-  - [22.2](#22.2) <a name='22.2'></a> Use camelCase when naming objects, functions, and instances.
+  - [22.2](#22.2) <a name='22.2'></a> <a href="http://eslint.org/docs/rules/camelcase"><img src="http://eslint.org/img/logo.svg" height="18" alt="linted by eslint" /></a>
+    Use camelCase when naming objects, functions, and instances.
 
     ```javascript
     // bad
@@ -1702,10 +1632,9 @@
   - [22.6](#22.6) <a name='22.6'></a> If your file exports a single class, your filename should be exactly the name of the class.
     ```javascript
     // file contents
-    class CheckBox {
+    export default class CheckBox {
       // ...
     }
-    export default CheckBox;
 
     // in some other file
     // bad
@@ -1738,6 +1667,27 @@
     export default AirbnbStyleGuide;
     ```
 
+  - [22.9](#22.9) <a name='22.9'></a> Prefer `export`ing declarations
+    where they are declared, rather than at the end of the file:
+
+    ```javascript
+    // bad
+    function createUser(name) { ... }
+    function getOrCreateUser(name) { ... }
+    // ... rest of file ...
+    export {
+      createUser,
+      getOrCreateUser,
+    }
+
+    // good
+    export function createUser(name) { ... }
+    export function getOrCreateUser(name) { ... }
+    // ... rest of file ...
+    ```
+
+    This style ensures that the set of `export`s remains up-to-date as
+    declarations are added or removed.
 
 **[⬆ back to top](#table-of-contents)**
 
@@ -1793,6 +1743,31 @@
       }
     }
     ```
+
+  - [23.5](#23.5) <a name='23.5'></a> Strongly prefer accessor methods to
+    defining ES5 getter and setter properties:
+
+    ```javascript
+    class Jedi {
+      constructor({ lightsaber = blue }) {
+        this._lightsaber = lightsaber;
+      }
+
+      // bad; use a normal getter method instead
+      get lightsaber() {
+        return this._lightsaber;
+      }
+
+      // bad; use a normal setter method instead
+      set lightsaber(newLightSaber) {
+        return this._lightsaber = newLightSaber;
+      }
+    }
+    ```
+
+    Not only is this style rarely more readable than the method
+    equivalent, performance can suffer dramatically when code relies on
+    specially-defined properties rather than just using normal properties.
 
 **[⬆ back to top](#table-of-contents)**
 
@@ -1916,193 +1891,6 @@
 
 **[⬆ back to top](#table-of-contents)**
 
-## Testing
-
-  - [28.1](#28.1) <a name='28.1'></a> **Yup.**
-
-    ```javascript
-    function() {
-      return true;
-    }
-    ```
-
-**[⬆ back to top](#table-of-contents)**
-
-
-## Performance
-
-  - [On Layout & Web Performance](http://kellegous.com/j/2013/01/26/layout-performance/)
-  - [String vs Array Concat](http://jsperf.com/string-vs-array-concat/2)
-  - [Try/Catch Cost In a Loop](http://jsperf.com/try-catch-in-loop-cost)
-  - [Bang Function](http://jsperf.com/bang-function)
-  - [jQuery Find vs Context, Selector](http://jsperf.com/jquery-find-vs-context-sel/13)
-  - [innerHTML vs textContent for script text](http://jsperf.com/innerhtml-vs-textcontent-for-script-text)
-  - [Long String Concatenation](http://jsperf.com/ya-string-concat)
-  - Loading...
-
-**[⬆ back to top](#table-of-contents)**
-
-
-## Resources
-
-**Learning ES6**
-
-  - [Draft ECMA 2015 (ES6) Spec](https://people.mozilla.org/~jorendorff/es6-draft.html)
-  - [ExploringJS](http://exploringjs.com/)
-  - [ES6 Compatibility Table](https://kangax.github.io/compat-table/es6/)
-  - [Comprehensive Overview of ES6 Features](http://es6-features.org/)
-
-**Read This**
-
-  - [Annotated ECMAScript 5.1](http://es5.github.com/)
-
-**Tools**
-
-  - Code Style Linters
-    + [ESlint](http://eslint.org/) - [Airbnb Style .eslintrc](https://github.com/airbnb/javascript/blob/master/linters/.eslintrc)
-    + [JSHint](http://www.jshint.com/) - [Airbnb Style .jshintrc](https://github.com/airbnb/javascript/blob/master/linters/jshintrc)
-    + [JSCS](https://github.com/jscs-dev/node-jscs) - [Airbnb Style Preset](https://github.com/jscs-dev/node-jscs/blob/master/presets/airbnb.json)
-
-**Other Styleguides**
-
-  - [Google JavaScript Style Guide](http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml)
-  - [jQuery Core Style Guidelines](http://docs.jquery.com/JQuery_Core_Style_Guidelines)
-  - [Principles of Writing Consistent, Idiomatic JavaScript](https://github.com/rwldrn/idiomatic.js/)
-
-**Other Styles**
-
-  - [Naming this in nested functions](https://gist.github.com/4135065) - Christian Johansen
-  - [Conditional Callbacks](https://github.com/airbnb/javascript/issues/52) - Ross Allen
-  - [Popular JavaScript Coding Conventions on Github](http://sideeffect.kr/popularconvention/#javascript) - JeongHoon Byun
-  - [Multiple var statements in JavaScript, not superfluous](http://benalman.com/news/2012/05/multiple-var-statements-javascript/) - Ben Alman
-
-**Further Reading**
-
-  - [Understanding JavaScript Closures](http://javascriptweblog.wordpress.com/2010/10/25/understanding-javascript-closures/) - Angus Croll
-  - [Basic JavaScript for the impatient programmer](http://www.2ality.com/2013/06/basic-javascript.html) - Dr. Axel Rauschmayer
-  - [You Might Not Need jQuery](http://youmightnotneedjquery.com/) - Zack Bloom & Adam Schwartz
-  - [ES6 Features](https://github.com/lukehoban/es6features) - Luke Hoban
-  - [Frontend Guidelines](https://github.com/bendc/frontend-guidelines) - Benjamin De Cock
-
-**Books**
-
-  - [JavaScript: The Good Parts](http://www.amazon.com/JavaScript-Good-Parts-Douglas-Crockford/dp/0596517742) - Douglas Crockford
-  - [JavaScript Patterns](http://www.amazon.com/JavaScript-Patterns-Stoyan-Stefanov/dp/0596806752) - Stoyan Stefanov
-  - [Pro JavaScript Design Patterns](http://www.amazon.com/JavaScript-Design-Patterns-Recipes-Problem-Solution/dp/159059908X)  - Ross Harmes and Dustin Diaz
-  - [High Performance Web Sites: Essential Knowledge for Front-End Engineers](http://www.amazon.com/High-Performance-Web-Sites-Essential/dp/0596529309) - Steve Souders
-  - [Maintainable JavaScript](http://www.amazon.com/Maintainable-JavaScript-Nicholas-C-Zakas/dp/1449327680) - Nicholas C. Zakas
-  - [JavaScript Web Applications](http://www.amazon.com/JavaScript-Web-Applications-Alex-MacCaw/dp/144930351X) - Alex MacCaw
-  - [Pro JavaScript Techniques](http://www.amazon.com/Pro-JavaScript-Techniques-John-Resig/dp/1590597273) - John Resig
-  - [Smashing Node.js: JavaScript Everywhere](http://www.amazon.com/Smashing-Node-js-JavaScript-Everywhere-Magazine/dp/1119962595) - Guillermo Rauch
-  - [Secrets of the JavaScript Ninja](http://www.amazon.com/Secrets-JavaScript-Ninja-John-Resig/dp/193398869X) - John Resig and Bear Bibeault
-  - [Human JavaScript](http://humanjavascript.com/) - Henrik Joreteg
-  - [Superhero.js](http://superherojs.com/) - Kim Joar Bekkelund, Mads Mobæk, & Olav Bjorkoy
-  - [JSBooks](http://jsbooks.revolunet.com/) - Julien Bouquillon
-  - [Third Party JavaScript](http://manning.com/vinegar/) - Ben Vinegar and Anton Kovalyov
-  - [Effective JavaScript: 68 Specific Ways to Harness the Power of JavaScript](http://amzn.com/0321812182) - David Herman
-  - [Eloquent JavaScript](http://eloquentjavascript.net/) - Marijn Haverbeke
-
-**Blogs**
-
-  - [DailyJS](http://dailyjs.com/)
-  - [JavaScript Weekly](http://javascriptweekly.com/)
-  - [JavaScript, JavaScript...](http://javascriptweblog.wordpress.com/)
-  - [Bocoup Weblog](http://weblog.bocoup.com/)
-  - [Adequately Good](http://www.adequatelygood.com/)
-  - [NCZOnline](http://www.nczonline.net/)
-  - [Perfection Kills](http://perfectionkills.com/)
-  - [Ben Alman](http://benalman.com/)
-  - [Dmitry Baranovskiy](http://dmitry.baranovskiy.com/)
-  - [Dustin Diaz](http://dustindiaz.com/)
-  - [nettuts](http://net.tutsplus.com/?s=javascript)
-
-**Podcasts**
-
-  - [JavaScript Jabber](http://devchat.tv/js-jabber/)
-
-
-**[⬆ back to top](#table-of-contents)**
-
-## In the Wild
-
-  This is a list of organizations that are using this style guide. Send us a pull request or open an issue and we'll add you to the list.
-
-  - **Aan Zee**: [AanZee/javascript](https://github.com/AanZee/javascript)
-  - **Adult Swim**: [adult-swim/javascript](https://github.com/adult-swim/javascript)
-  - **Airbnb**: [airbnb/javascript](https://github.com/airbnb/javascript)
-  - **American Insitutes for Research**: [AIRAST/javascript](https://github.com/AIRAST/javascript)
-  - **Apartmint**: [apartmint/javascript](https://github.com/apartmint/javascript)
-  - **Avalara**: [avalara/javascript](https://github.com/avalara/javascript)
-  - **Billabong**: [billabong/javascript](https://github.com/billabong/javascript)
-  - **Compass Learning**: [compasslearning/javascript-style-guide](https://github.com/compasslearning/javascript-style-guide)
-  - **DailyMotion**: [dailymotion/javascript](https://github.com/dailymotion/javascript)
-  - **Digitpaint** [digitpaint/javascript](https://github.com/digitpaint/javascript)
-  - **Evernote**: [evernote/javascript-style-guide](https://github.com/evernote/javascript-style-guide)
-  - **ExactTarget**: [ExactTarget/javascript](https://github.com/ExactTarget/javascript)
-  - **Expensify** [Expensify/Style-Guide](https://github.com/Expensify/Style-Guide/blob/master/javascript.md)
-  - **Flexberry**: [Flexberry/javascript-style-guide](https://github.com/Flexberry/javascript-style-guide)
-  - **Gawker Media**: [gawkermedia/javascript](https://github.com/gawkermedia/javascript)
-  - **GeneralElectric**: [GeneralElectric/javascript](https://github.com/GeneralElectric/javascript)
-  - **GoodData**: [gooddata/gdc-js-style](https://github.com/gooddata/gdc-js-style)
-  - **Grooveshark**: [grooveshark/javascript](https://github.com/grooveshark/javascript)
-  - **How About We**: [howaboutwe/javascript](https://github.com/howaboutwe/javascript)
-  - **InfoJobs**: [InfoJobs/JavaScript-Style-Guide](https://github.com/InfoJobs/JavaScript-Style-Guide)
-  - **Intent Media**: [intentmedia/javascript](https://github.com/intentmedia/javascript)
-  - **Jam3**: [Jam3/Javascript-Code-Conventions](https://github.com/Jam3/Javascript-Code-Conventions)
-  - **JSSolutions**: [JSSolutions/javascript](https://github.com/JSSolutions/javascript)
-  - **Kinetica Solutions**: [kinetica/javascript](https://github.com/kinetica/javascript)
-  - **Mighty Spring**: [mightyspring/javascript](https://github.com/mightyspring/javascript)
-  - **MinnPost**: [MinnPost/javascript](https://github.com/MinnPost/javascript)
-  - **ModCloth**: [modcloth/javascript](https://github.com/modcloth/javascript)
-  - **Money Advice Service**: [moneyadviceservice/javascript](https://github.com/moneyadviceservice/javascript)
-  - **Muber**: [muber/javascript](https://github.com/muber/javascript)
-  - **National Geographic**: [natgeo/javascript](https://github.com/natgeo/javascript)
-  - **National Park Service**: [nationalparkservice/javascript](https://github.com/nationalparkservice/javascript)
-  - **Nimbl3**: [nimbl3/javascript](https://github.com/nimbl3/javascript)
-  - **Orion Health**: [orionhealth/javascript](https://github.com/orionhealth/javascript)
-  - **Peerby**: [Peerby/javascript](https://github.com/Peerby/javascript)
-  - **Razorfish**: [razorfish/javascript-style-guide](https://github.com/razorfish/javascript-style-guide)
-  - **reddit**: [reddit/styleguide/javascript](https://github.com/reddit/styleguide/tree/master/javascript)
-  - **REI**: [reidev/js-style-guide](https://github.com/reidev/js-style-guide)
-  - **Ripple**: [ripple/javascript-style-guide](https://github.com/ripple/javascript-style-guide)
-  - **SeekingAlpha**: [seekingalpha/javascript-style-guide](https://github.com/seekingalpha/javascript-style-guide)
-  - **Shutterfly**: [shutterfly/javascript](https://github.com/shutterfly/javascript)
-  - **StudentSphere**: [studentsphere/javascript](https://github.com/studentsphere/javascript)
-  - **Target**: [target/javascript](https://github.com/target/javascript)
-  - **TheLadders**: [TheLadders/javascript](https://github.com/TheLadders/javascript)
-  - **T4R Technology**: [T4R-Technology/javascript](https://github.com/T4R-Technology/javascript)
-  - **Userify**: [userify/javascript](https://github.com/userify/javascript)
-  - **VoxFeed**: [VoxFeed/javascript-style-guide](https://github.com/VoxFeed/javascript-style-guide)
-  - **Weggo**: [Weggo/javascript](https://github.com/Weggo/javascript)
-  - **Zillow**: [zillow/javascript](https://github.com/zillow/javascript)
-  - **ZocDoc**: [ZocDoc/javascript](https://github.com/ZocDoc/javascript)
-
-## Translation
-
-  This style guide is also available in other languages:
-
-  - ![br](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Brazil.png) **Brazilian Portuguese**: [armoucar/javascript-style-guide](https://github.com/armoucar/javascript-style-guide)
-  - ![bg](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Bulgaria.png) **Bulgarian**: [borislavvv/javascript](https://github.com/borislavvv/javascript)
-  - ![ca](https://raw.githubusercontent.com/fpmweb/javascript-style-guide/master/img/catala.png) **Catalan**: [fpmweb/javascript-style-guide](https://github.com/fpmweb/javascript-style-guide)
-  - ![tw](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Taiwan.png) **Chinese(Traditional)**: [jigsawye/javascript](https://github.com/jigsawye/javascript)
-  - ![cn](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/China.png) **Chinese(Simplified)**: [sivan/javascript-style-guide](https://github.com/sivan/javascript-style-guide)
-  - ![fr](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/France.png) **French**: [nmussy/javascript-style-guide](https://github.com/nmussy/javascript-style-guide)
-  - ![de](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Germany.png) **German**: [timofurrer/javascript-style-guide](https://github.com/timofurrer/javascript-style-guide)
-  - ![it](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Italy.png) **Italian**: [sinkswim/javascript-style-guide](https://github.com/sinkswim/javascript-style-guide)
-  - ![jp](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Japan.png) **Japanese**: [mitsuruog/javacript-style-guide](https://github.com/mitsuruog/javacript-style-guide)
-  - ![kr](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/South-Korea.png) **Korean**: [tipjs/javascript-style-guide](https://github.com/tipjs/javascript-style-guide)
-  - ![pl](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Poland.png) **Polish**: [mjurczyk/javascript](https://github.com/mjurczyk/javascript)
-  - ![ru](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Russia.png) **Russian**: [uprock/javascript](https://github.com/uprock/javascript)
-  - ![es](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Spain.png) **Spanish**: [paolocarrasco/javascript-style-guide](https://github.com/paolocarrasco/javascript-style-guide)
-  - ![th](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Thailand.png) **Thai**: [lvarayut/javascript-style-guide](https://github.com/lvarayut/javascript-style-guide)
-
-## The JavaScript Style Guide Guide
-
-  - [Reference](https://github.com/airbnb/javascript/wiki/The-JavaScript-Style-Guide-Guide)
-
-## Chat With Us About JavaScript
-
-  - Find us on [gitter](https://gitter.im/airbnb/javascript).
 
 ## Contributors
 
