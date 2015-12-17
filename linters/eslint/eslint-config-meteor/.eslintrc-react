@@ -1,0 +1,59 @@
+/* Meteor + React linting configuration
+ *
+ * Documentation on rules can be found at:
+ * http://eslint.org/docs/rules/ <- Optionally append the rulename
+ *
+ */
+{
+  "plugins": [
+      "react"
+  ],
+
+  "rules": {
+/**
+ * JSX style
+ */
+    "jsx-quotes": [2, "prefer-double"],
+    "no-extra-parens": 0,
+    "react/display-name": 0,
+    "react/jsx-boolean-value": [2, "always"],
+    "react/jsx-no-undef": 2,
+    "react/jsx-sort-props": 0,
+    "react/jsx-sort-prop-types": 0,
+    "react/jsx-uses-react": 2,
+    "react/jsx-uses-vars": 2,
+    "react/no-did-mount-set-state": [2, "allow-in-func"],
+    "react/no-did-update-set-state": 2,
+    "react/no-multi-comp": 2,
+    "react/no-unknown-property": 2,
+    "react/prop-types": 2,
+    "react/react-in-jsx-scope": 2,
+    "react/self-closing-comp": 2,
+    "react/wrap-multilines": 2,
+
+    "react/sort-comp": [2, {
+      "order": [
+        "displayName",
+        "propTypes",
+        "contextTypes",
+        "childContextTypes",
+        "mixins",
+        "statics",
+        "defaultProps",
+        "getDefaultProps",
+        "getInitialState",
+        "getMeteorData",
+        "getChildContext",
+        "componentWillMount",
+        "componentDidMount",
+        "componentWillReceiveProps",
+        "shouldComponentUpdate",
+        "componentWillUpdate",
+        "componentDidUpdate",
+        "componentWillUnmount",
+        "/^(?!render).*$/",
+        "render"
+      ]
+    }]
+  }
+}

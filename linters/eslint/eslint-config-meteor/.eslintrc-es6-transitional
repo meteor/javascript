@@ -1,0 +1,20 @@
+/* Meteor's ES6 => ES6 Transitional Javascript linting configurations
+ *
+ * Makes some ES6 errors into warnings for transitional code.
+ * Documentation on rules can be found at:
+ * http://eslint.org/docs/rules/ <- Optionally append the rulename
+ *
+ */
+
+{
+  "rules": {
+/**
+ * ES6 Specific
+ */
+    "no-var": 1,                     // http://eslint.org/docs/rules/no-var
+    "prefer-arrow-callback": 1,      // http://eslint.org/docs/rules/prefer-arrow-callback
+    "prefer-const": 1,               // http://eslint.org/docs/rules/prefer-const
+    "prefer-spread": 1,              // http://eslint.org/docs/rules/prefer-spread
+    "prefer-template": 1,            // http://eslint.org/docs/rules/prefer-template
+  }
+}
