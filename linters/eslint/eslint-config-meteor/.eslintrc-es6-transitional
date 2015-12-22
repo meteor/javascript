@@ -9,12 +9,20 @@
 {
   "rules": {
 /**
- * ES6 Specific
+ * Soften to warnings for non-es6 code
  */
     "no-var": 1,                     // http://eslint.org/docs/rules/no-var
+    "object-shorthand": [1,          // http://eslint.org/docs/rules/object-shorthand
+        "properties"
+    ],
     "prefer-arrow-callback": 1,      // http://eslint.org/docs/rules/prefer-arrow-callback
     "prefer-const": 1,               // http://eslint.org/docs/rules/prefer-const
     "prefer-spread": 1,              // http://eslint.org/docs/rules/prefer-spread
     "prefer-template": 1,            // http://eslint.org/docs/rules/prefer-template
+    "func-style": [1,                // http://eslint.org/docs/rules/func-style
+        "declaration", {
+            "allowArrowFunctions": true
+        }
+    ],
   }
 }
